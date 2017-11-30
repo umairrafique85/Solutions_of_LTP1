@@ -22,7 +22,7 @@ def is_valid_word(wordlist, word):
     >>> is_valid_word(['ANT', 'BOX', 'SOB', 'TO'], 'TO')
     True
     """
-
+    return word in wordlist
 
 def make_str_from_row(board, row_index):
     """ (list of list of str, int) -> str
@@ -33,7 +33,8 @@ def make_str_from_row(board, row_index):
     >>> make_str_from_row([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], 0)
     'ANTT'
     """
-
+    return ''.join(board[row_index])
+    
 
 def make_str_from_column(board, column_index):
     """ (list of list of str, int) -> str
@@ -44,7 +45,10 @@ def make_str_from_column(board, column_index):
     >>> make_str_from_column([['A', 'N', 'T', 'T'], ['X', 'S', 'O', 'B']], 1)
     'NS'
     """
-
+    sol = ''
+    for i in board:
+        sol = sol + i[column_index]
+    return sol
 
 def board_contains_word_in_row(board, word):
     """ (list of list of str, str) -> bool
@@ -79,6 +83,10 @@ def board_contains_word_in_column(board, word):
     False
     """
 
+    for i in range(len(board[0])):
+        if word in make_str_from_column(board, i):
+            return True
+    return False
 
 def board_contains_word(board, word):
     """ (list of list of str, str) -> bool
