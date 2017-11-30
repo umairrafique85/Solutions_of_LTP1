@@ -1,1 +1,0 @@
-# Solutions_of_LTP1
